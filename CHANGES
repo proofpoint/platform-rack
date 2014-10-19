@@ -1,3 +1,5 @@
 Platform-Rack 1.06
 
 * Split the Platform Rack support from the Platform project.
+
+* Upgraded to Platform 1.06 (disable SSLv3)

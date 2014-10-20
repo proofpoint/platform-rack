@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.proofpoint.platform</groupId>
         <artifactId>platform-rack</artifactId>
-        <version>1.06-SNAPSHOT</version>
+        <version>1.06</version>
     </parent>
 
     <inceptionYear>2010</inceptionYear>
@@ -36,7 +36,7 @@
         <connection>scm:git:git://github.com/proofpoint/platform.git</connection>
         <developerConnection>scm:git:git@github.com:proofpoint/platform.git</developerConnection>
         <url>http://github.com/proofpoint/platform/tree/master</url>
-      <tag>HEAD</tag>
+      <tag>1.06</tag>
   </scm>
 
     <distributionManagement>
@@ -57,13 +57,13 @@
         <dependency>
             <groupId>com.proofpoint.platform</groupId>
             <artifactId>rack</artifactId>
-            <version>1.06-SNAPSHOT</version>
+            <version>1.06</version>
         </dependency>
 
         <dependency>
             <groupId>com.proofpoint.platform</groupId>
             <artifactId>rack-launcher</artifactId>
-            <version>1.06-SNAPSHOT</version>
+            <version>1.06</version>
             <classifier>bin</classifier>
             <type>tar.gz</type>
         </dependency>
@@ -178,7 +178,7 @@
                             <dependency>
                                 <groupId>com.proofpoint.platform</groupId>
                                 <artifactId>rack-packaging</artifactId>
-                                <version>1.06-SNAPSHOT</version>
+                                <version>1.06</version>
                             </dependency>
                         </dependencies>
 

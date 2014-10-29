@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>platform-rack</artifactId>
-    <version>1.07</version>
+    <version>1.08-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>platform-rack</name>
     <description>Proofpoint platform</description>
@@ -44,7 +44,7 @@
         <connection>scm:git:git://github.com/proofpoint/platform-rack.git</connection>
         <developerConnection>scm:git:git@github.com:proofpoint/platform-rack.git</developerConnection>
         <url>http://github.com/proofpoint/platform-rack/tree/master</url>
-      <tag>1.07</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>

@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.proofpoint.platform</groupId>
         <artifactId>library</artifactId>
-        <version>1.07</version>
+        <version>1.27</version>
     </parent>
 
     <inceptionYear>2010</inceptionYear>
@@ -28,17 +28,7 @@
         </license>
     </licenses>
 
-    <developers>
-        <developer>
-            <id>jgmyers</id>
-            <name>John Gardiner Myers</name>
-            <email>jgmyers@proofpoint.com</email>
-        </developer>
-    </developers>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <developers/>
 
     <scm>
         <connection>scm:git:git://github.com/proofpoint/platform-rack.git</connection>

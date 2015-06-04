@@ -18,7 +18,7 @@ require 'json'
 
 get "/name-echo" do
   logger = request.logger
-  logger.debug "name-echo was called with #{params[:name]}"
+  logger.info "name-echo was called with #{params[:name]}"
   return "#{params[:name]}"
 end
 

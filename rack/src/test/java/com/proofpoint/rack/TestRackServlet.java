@@ -15,16 +15,10 @@
  */
 package com.proofpoint.rack;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
-import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.OutputStreamAppender;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Resources;
 import com.proofpoint.log.Logging;
 import com.proofpoint.testing.Assertions;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -38,9 +32,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.WriteListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Random;
 
@@ -67,30 +59,18 @@ public class TestRackServlet
         String expectedMessage = "FooBarBaz";
 
         Logging.initialize();
-        OutputStream stream = new ByteArrayOutputStream();
+        StringBuilder messages = new StringBuilder();
 
-        ch.qos.logback.classic.Logger rackLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("helloworldsinatra.rb:HEAD /name-echo");
-        rackLogger.setLevel(Level.ALL);
-        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
+        try {
+            Logging.addLogTester("helloworldsinatra.rb:HEAD /name-echo", ((level, message, throwable) -> messages.append(message)));
 
-        PatternLayoutEncoder encoder = new PatternLayoutEncoder();
-        encoder.setPattern("%m%n");
-        encoder.setContext(context);
-        encoder.start();
+            assertEquals(performRequest("name=" + expectedMessage, "/name-echo", "", "GET"), expectedMessage);
+        }
+        finally {
+            Logging.resetLogTesters();
+        }
 
-        OutputStreamAppender<ILoggingEvent> streamAppender = new OutputStreamAppender<ILoggingEvent>();
-        streamAppender.setContext(context);
-        streamAppender.setEncoder(encoder);
-        streamAppender.setOutputStream(stream); // needs to happen after setEncoder()
-        streamAppender.start();
-
-        rackLogger.addAppender(streamAppender);
-
-        assertEquals(performRequest("name=" + expectedMessage, "/name-echo", "", "GET"), expectedMessage);
-
-        streamAppender.stop();
-
-        Assertions.assertContains(stream.toString(), "name-echo was called with " + expectedMessage);
+        Assertions.assertContains(messages.toString(), "name-echo was called with " + expectedMessage);
     }
 
     @Test

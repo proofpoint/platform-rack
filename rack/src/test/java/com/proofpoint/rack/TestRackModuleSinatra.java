@@ -136,7 +136,7 @@ public class TestRackModuleSinatra
         StringResponse responsePost = client.execute(
                 preparePost()
                         .setUri(server.getBaseUrl().resolve("/temp-store"))
-                        .setBodyGenerator(createStaticBodyGenerator(expected.getBytes(Charsets.UTF_8)))
+                        .setBodySource(createStaticBodyGenerator(expected.getBytes(Charsets.UTF_8)))
                         .build(),
                 createStringResponseHandler());
 
